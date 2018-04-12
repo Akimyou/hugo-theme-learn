@@ -71,3 +71,30 @@ weight = 20
 name = "<i class='fa fa-fw fa-bullhorn'></i> Crédits"
 url = "/credits"
 weight = 30
+
+[Languages.zh]
+title = "Hugo Learn Theme 的文档"
+weight = 3
+languageName = "中文"
+
+[[Languages.zh.menu.shortcuts]]
+name = "<i class='fa fa-fw fa-github'></i> Github 仓库"
+identifier = "ds"
+url = "https://github.com/matcornic/hugo-theme-learn"
+weight = 10
+
+[[Languages.zh.menu.shortcuts]]
+name = "<i class='fa fa-fw fa-camera'></i> 作品展示"
+url = "showcase"
+weight = 11
+
+[[Languages.zh.menu.shortcuts]]
+name = "<i class='fa fa-fw fa-bookmark'></i> Hugo 的文档"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20
+
+[[Languages.zh.menu.shortcuts]]
+name = "<i class='fa fa-fw fa-bullhorn'></i> 鸣谢"
+url = "credits"
+weight = 30
