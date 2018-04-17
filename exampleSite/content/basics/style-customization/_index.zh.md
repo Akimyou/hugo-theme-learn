@@ -1,111 +1,110 @@
 ---
 date: 2016-04-09T16:50:16+02:00
-title: Style customization
+title: 自定义样式
 weight: 25
 ---
 
-**Hugo-theme-learn** has been built to be as configurable as possible by defining multiple [partials](https://gohugo.io/templates/partials/)
+**Hugo-theme-learn** 通过定义多种 [局部模版（partials）](https://gohugo.io/templates/partials/)，使得整体拥有较高的可配置性。
 
-In `themes/hugo-theme-learn/layouts/partials/`, you will find all the partials defined for this theme. If you need to overwrite something, don't change the code directly. Instead [follow this page](https://gohugo.io/themes/customizing/). You'd create a new partial in the `layouts/partials` folder of your local project. This partial will have the priority.
+在 `themes/hugo-theme-learn/layouts/partials/` 目录，可找到所有的局部模版。如需修改内容，请不要直接修改主题的代码。参考 [这篇文章](https://gohugo.io/themes/customizing/)，在自己网站项目的 `layouts/partials` 目录下创建新的局部模版。局部模版有优先级关系，如下：
 
-This theme defines the following partials :
+主题定义的局部模版：
 
-- *header*: the header of the content page (contains the breadcrumbs). _Not meant to be overwritten_
-- *custom-header*: custom headers in page. Meant to be overwritten when adding CSS imports. Don't forget to include `style` HTML tag directive in your file
-- *footer*: the footer of the content page (contains the arrows). _Not meant to be overwritten_
-- *custom-footer*:  custom footer in page. Meant to be overwritten when adding Javacript. Don't forget to include `javascript` HTML tag directive in your file
-- *favicon*: the favicon
-- *logo*: the logo, on top left hand corner.
-- *meta*: HTML meta tags, if you want to change default behavior
-- *menu*: left menu. _Not meant to be overwritten_
-- *menu-footer*: footer of the the left menu
-- *search*: search box
-- *toc*: table of contents
+- *header*: 页面的头部（包含面包屑导航）。_请勿覆盖_
+- *custom-header*: 页面头部的自定义部分，当需要自定义样式时可覆盖，注意别忘记包含 `style` 标签
+- *footer*: 页面的尾部。_请勿覆盖_
+- *custom-footer*:  页面尾部的自定义部分，当需要自定义脚本时可覆盖，注意别忘记包含 `srcipt` 标签
+- *favicon*: 网站的 favicon
+- *logo*: 网站的 logo，位于左上角
+- *meta*: HTML 的 meta 标签, 可覆盖修改默认 meta 规则
+- *menu*: 左侧的菜单。 _请勿覆盖_
+- *menu-footer*: 左侧菜单的尾部
+- *search*: 搜索框
+- *toc*: 页面内容中的表格
 
-## Change the logo
+## 修改网站 Logo
 
-Create a new file in `layouts/partials/` named `logo.html`. Then write any HTML you want.
-You could use an `img` HTML tag and reference an image created under the *static* folder, or you could paste a SVG definition !
+在 `layouts/partials/` 文件夹下创建 `logo.html` 文件，可往里面写入任何内容。还可以使用 `img` 标签引用 *static* 目录下的图片做 logo，或者直接使用 SVG ！
 
 {{% notice note %}}
-The size of the logo will adapt automatically
+logo 图片的大小会自动调整
 {{% /notice %}}
 
-## Change the favicon
+## 修改网站 favicon
 
-If your favicon is a png, just drop off your image in your local `static/images/` folder and names it `favicon.png`
+如果 favicon 是 png 文件，只需将其放到项目的 `static/images/` 文件夹下命名为 `favicon.png` 即可。
 
-If you need to change this default behavior, create a new file in `layouts/partials/` named `favicon.html`. Then write something like this:
+如果想要改变生成 favicon 的默认行为，可在 `layouts/partials/` 文件夹下创建 `favicon.html` 文件，往里写入类似这样内容：
 
 ```html
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 ```
 
-## Change default colors {#theme-variant}
+## 设置默认配色风格 {#theme-variant}
 
-**Hugo Learn theme** let you choose between 3 native color scheme variants, but feel free to add one yourself ! Default color scheme is based on [Grav Learn Theme](https://learn.getgrav.org/).
+**Hugo Learn theme** 提供 3 种预设配色风格，但也完全可以创建自定义风格！预设风格的配色方案基于 [Grav Learn Theme](https://learn.getgrav.org/)。
 
-### Red variant
+### 红色风格
 
 ```toml
 [params]
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  # 设置默认配色风格，可选项："red", "blue", "green"
   themeVariant = "red"
 ```
 
-![Red variant](/basics/style-customization/images/red-variant.png?width=60pc)
+![红色风格](/basics/style-customization/images/red-variant.png?width=60pc)
 
-### Blue variant
+### 蓝色风格
 
 ```toml
 [params]
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  # 设置默认配色风格，可选项："red", "blue", "green"
   themeVariant = "blue"
 ```
 
-![Blue variant](/basics/style-customization/images/blue-variant.png?width=60pc)
+![蓝色风格](/basics/style-customization/images/blue-variant.png?width=60pc)
 
-### Green variant
+### 绿色风格
 
 ```toml
 [params]
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  # 设置默认配色风格，可选项："red", "blue", "green"
   themeVariant = "green"
 ```
 
-![Green variant](/basics/style-customization/images/green-variant.png?width=60pc)
+![绿色风格](/basics/style-customization/images/green-variant.png?width=60pc)
 
-### 'Yours‘ variant
+### 自定义风格
 
-First, create a new CSS file in your local `static/css` folder prefixed by `theme` (e.g. with _mine_ theme `static/css/theme-mine.css`). Copy the following content and modify colors in CSS variables.
+首先，在项目的 `static/css` 文件夹下新建一个以 `theme` 打头的 CSS 文件（例如 _mine_ 主题 `static/css/theme-mine.css`）。复制以下内容到文件中并修改颜色相关的 CSS 变量。
 
 ```css
 
 :root{
-    
-    --MAIN-TEXT-color:#323232; /* Color of text by default */
-    --MAIN-TITLES-TEXT-color: #5e5e5e; /* Color of titles h2-h3-h4-h5 */
-    --MAIN-LINK-color:#1C90F3; /* Color of links */
-    --MAIN-LINK-HOVER-color:#167ad0; /* Color of hovered links */
-    --MAIN-ANCHOR-color: #1C90F3; /* color of anchors on titles */
 
-    --MENU-HEADER-BG-color:#1C90F3; /* Background color of menu header */
-    --MENU-HEADER-BORDER-color:#33a1ff; /*Color of menu header border */ 
+    --MAIN-TEXT-color:#323232; /* 默认内容文本颜色 */
+    --MAIN-TITLES-TEXT-color: #5e5e5e; /* 默认标题颜色 h2-h3-h4-h5 */
+    --MAIN-LINK-color:#1C90F3; /* 链接颜色 */
+    --MAIN-LINK-HOVER-color:#167ad0; /* 选中的链接颜色 */
+    --MAIN-ANCHOR-color: #1C90F3; /* 标题锚点颜色 */
 
-    --MENU-SEARCH-BG-color:#167ad0; /* Search field background color (by default borders + icons) */
-    --MENU-SEARCH-BOX-color: #33a1ff; /* Override search field border color */
-    --MENU-SEARCH-BOX-ICONS-color: #a1d2fd; /* Override search field icons color */
+    --MENU-HEADER-BG-color:#1C90F3; /* 菜单头部背景颜色 */
+    --MENU-HEADER-BORDER-color:#33a1ff; /* 菜单头部边框颜色 */
 
-    --MENU-SECTIONS-ACTIVE-BG-color:#20272b; /* Background color of the active section and its childs */
-    --MENU-SECTIONS-BG-color:#252c31; /* Background color of other sections */
-    --MENU-SECTIONS-LINK-color: #ccc; /* Color of links in menu */
-    --MENU-SECTIONS-LINK-HOVER-color: #e6e6e6;  /* Color of links in menu, when hovered */
-    --MENU-SECTION-ACTIVE-CATEGORY-color: #777; /* Color of active category text */
-    --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #fff; /* Color of background for the active category (only) */
+    --MENU-SEARCH-BG-color:#167ad0; /* 菜单搜索框背景颜色 (也是边框与图标的颜色) */
+    --MENU-SEARCH-BOX-color: #33a1ff; /* 覆盖菜单搜索框边框颜色 */
+    --MENU-SEARCH-BOX-ICONS-color: #a1d2fd; /* 覆盖菜单搜索框图标颜色 */
 
-    --MENU-VISITED-color: #33a1ff; /* Color of 'page visited' icons in menu */
-    --MENU-SECTION-HR-color: #20272b; /* Color of <hr> separator in menu */
-    
+    --MENU-SECTIONS-ACTIVE-BG-color:#20272b; /* 选中菜单项目与其子项目背景颜色 */
+    --MENU-SECTIONS-BG-color:#252c31; /* 未选中菜单项目背景颜色 */
+    --MENU-SECTIONS-LINK-color: #ccc; /* 菜单项目链接颜色 */
+    --MENU-SECTIONS-LINK-HOVER-color: #e6e6e6;  /* 菜单项目链接选中颜色 */
+    --MENU-SECTION-ACTIVE-CATEGORY-color: #777; /* 选中菜单项目文本颜色 */
+    --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #fff; /* 选中菜单项目背景颜色 */
+
+    --MENU-VISITED-color: #33a1ff; /* 菜单已访问标记颜色 */
+    --MENU-SECTION-HR-color: #20272b; /* 菜单项目分割线颜色 */
+
 }
 
 body {
@@ -185,10 +184,10 @@ a:hover {
 }
 ```
 
-Then, set the `themeVariant` value with the name of your custom theme file. That's it !
+然后，将 `themeVariant` 设置为自定义主题风格的名称即可。
 
 ```toml
 [params]
-  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  # 设置默认配色风格，可选项："red", "blue", "green"
   themeVariant = "mine"
 ```
